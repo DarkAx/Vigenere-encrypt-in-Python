@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 def encrypt(text,key):
-	import string
 	key = key.lower(); final=""; cipher=""; symbol=0; al=[chr(i) for i in range(97,123)]
 	
 	if not key.isalpha():
