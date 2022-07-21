@@ -2,7 +2,7 @@
 ### Simple and readable Python code that encrypts to & decrypt from Vigenere Cipher.
 
 ## Usage :
-### ``VCipher("Text", "Key")``
+### `VCipher("Text", "Key")`
 
 ### After downloading the file, create a new python file and write:
     from vcipher import *
