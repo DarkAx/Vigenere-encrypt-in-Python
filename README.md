@@ -9,7 +9,7 @@
      
     print(VCipher("Text", "Key"))
 
-###  To decrypt just pass True argument to the function call; such as this:
+###  To encrypt just pass True argument to the function call; such as this:
 		
     print(VCipher("EncryptMe", "Test123", True))
     
