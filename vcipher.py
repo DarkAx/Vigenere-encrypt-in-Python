@@ -1,27 +1,51 @@
 #!/usr/bin/env python3
-def encrypt(text,key):
-	key = key.lower(); final=""; cipher=""; symbol=0; al=[chr(i) for i in range(97,123)]
+def VCipher(Text, Key, encrypt=False):  
+	'''Encrypting & Decrypting Vigenere cipher
 	
-	if not key.isalpha():
-		return "Key must consist of letters"
+			Usage : VCipher("Text", "Key")
+	
+	   To decrypt just pass True argument to the function call 
+				such as
+				
+			VCipher("EncryptMe", "Test123", True)'''
 
-	if len(key) != len(text):
-		for i in range(len(text)-len(key)):
-			key+=key[i]
-	i=0
-	while i < len(text):
-		process=text.lower()
-		if text[i].isalpha():
-			cipher+=al[(al.index(process[i])+al.index(key[i-symbol])) % 26]
-		else:
-			cipher+=process[i]
-			symbol+=1
-		i+=1
 
-	for counter in range(len(text)):
-			if text[counter].isupper() and cipher[counter].islower():
-					final+=cipher[counter].upper()
+	
+	NewText= ""; symbol=0; Key = Key.lower(); alpha=[chr(i) for i in range(97,123)] # Declaring..
+	
+	if len(Key) != len(Text):
+		for i in range(len(Text)-len(Key)): 
+			Key+=Key[i]
+	
+	for i in range(len(Text)):
+		Process=Text.lower() # Making the Text temporary lower to make it easy to deal with it. 
+		
+		if Process[i].isalpha():
+			KeyIndex=alpha.index(Key[i-symbol]) # If there was a symbol in the Text it will be substracted
+			TextIndex=alpha.index(Process[i]) # from the Key as the function only deals with alphabet.
+		
 
+			if encrypt:
+				NewText+=alpha[(TextIndex + KeyIndex) % 26]
+			
 			else:
-					final+=cipher[counter]
-	return "Encrypted text is : "+final
+			
+				NewText+=alpha[(TextIndex - KeyIndex)% 26]
+		else:
+			NewText+=Process[i]
+			symbol+=1
+
+	else: # If the for function has succeeded without any errors or break it will do the next.
+
+		Process=""
+		for char in range(len(Text)):
+				if Text[char].isupper() and NewText[char].islower(): # Here we are converting back 
+						Process+=NewText[char].upper()               # any lower character to its 
+																	 # original upper one.
+				else:   
+					Process+=NewText[char]
+	
+	if encrypt: return "Encrypted test is : "+Process
+	
+	else: return "Decrypted test is : "+Process
+	
