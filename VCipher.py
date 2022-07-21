@@ -45,7 +45,7 @@ def VCipher(Text, Key, encrypt=False):
 				else:   
 					Process+=NewText[char]
 	
-	if encrypt: return "Encrypted test is : "+Process
+	if encrypt: return "Encrypted text is : "+Process
 	
-	else: return "Decrypted test is : "+Process
+	else: return "Decrypted text is : "+Process
 	
