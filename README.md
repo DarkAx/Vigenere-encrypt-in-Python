@@ -5,7 +5,7 @@
 ### `VCipher("Text", "Key")`
 
 ### After downloading the file, create a new python file and write:
-    from vcipher import *
+    from VCipher import *
      
     print(VCipher("Text", "Key"))
 
